@@ -1,0 +1,368 @@
+/* =====================================================
+   CartShare - style.css
+   Colour palette, layout polish and print rules.
+   Bootstrap 5 provides the grid and components; this file
+   customises them and adds the CartShare look.
+   ===================================================== */
+
+/* ---------- 1. Design tokens (colour palette) ---------- */
+:root {
+  --cs-primary: #0f766e;        /* deep teal: main brand colour */
+  --cs-primary-dark: #0c5f59;   /* hover / pressed state */
+  --cs-accent: #f59e0b;         /* amber: goal progress */
+  --cs-bg: #f3f7f6;             /* page background */
+  --cs-surface: #ffffff;        /* cards */
+  --cs-text: #1f2d2f;           /* main text */
+  --cs-muted: #5d6e72;          /* secondary text */
+  --cs-border: #dbe5e4;         /* subtle borders */
+  --cs-soft: #e6f4f2;           /* light teal background */
+
+  /* Bootstrap colour variables, so badges and components pick up the brand colour */
+  --bs-primary: #0f766e;
+  --bs-primary-rgb: 15, 118, 110;
+}
+
+/* ---------- 2. Base typography and page ---------- */
+body {
+  background-color: var(--cs-bg);
+  color: var(--cs-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+.cs-title {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  color: var(--cs-text);
+}
+
+.cs-muted {
+  color: var(--cs-muted) !important;
+}
+
+/* ---------- 3. Navigation bar ---------- */
+.cs-navbar {
+  background-color: var(--cs-surface);
+  border-bottom: 1px solid var(--cs-border);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  z-index: 1030;
+}
+
+.cs-brand {
+  font-weight: 800;
+  color: var(--cs-primary) !important;
+  font-size: 1.25rem;
+}
+
+.cs-sync-badge {
+  background-color: var(--cs-soft);
+  color: var(--cs-primary-dark);
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 0.45em 0.8em;
+  white-space: nowrap;
+}
+
+/* ---------- 4. Buttons and form focus ---------- */
+.btn-primary {
+  --bs-btn-bg: var(--cs-primary);
+  --bs-btn-border-color: var(--cs-primary);
+  --bs-btn-hover-bg: var(--cs-primary-dark);
+  --bs-btn-hover-border-color: var(--cs-primary-dark);
+  --bs-btn-active-bg: var(--cs-primary-dark);
+  --bs-btn-active-border-color: var(--cs-primary-dark);
+  --bs-btn-disabled-bg: var(--cs-primary);
+  --bs-btn-disabled-border-color: var(--cs-primary);
+  font-weight: 600;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--cs-primary);
+  --bs-btn-border-color: var(--cs-primary);
+  --bs-btn-hover-bg: var(--cs-primary);
+  --bs-btn-hover-border-color: var(--cs-primary);
+  --bs-btn-active-bg: var(--cs-primary-dark);
+  --bs-btn-active-border-color: var(--cs-primary-dark);
+  font-weight: 600;
+}
+
+.btn {
+  border-radius: 0.6rem;
+}
+
+.form-control {
+  border-radius: 0.6rem;
+  border-color: var(--cs-border);
+  padding: 0.6rem 0.85rem;
+}
+
+.form-control:focus {
+  border-color: var(--cs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(15, 118, 110, 0.22);
+}
+
+/* ---------- 5. Cards ---------- */
+.cs-card {
+  background-color: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(31, 45, 47, 0.05);
+}
+
+/* ---------- 6. Room header and code ---------- */
+.cs-room-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: var(--cs-primary);
+  background-color: var(--cs-soft);
+  border: 1px dashed var(--cs-primary);
+  border-radius: 0.6rem;
+  padding: 0.2rem 0.8rem;
+}
+
+/* ---------- 7. Badges ---------- */
+.cs-count-badge {
+  background-color: var(--cs-soft);
+  color: var(--cs-primary-dark);
+  font-weight: 700;
+  padding: 0.5em 0.85em;
+  border-radius: 999px;
+}
+
+/* ---------- 8. Delivery goal progress bar ---------- */
+.progress {
+  height: 0.65rem;
+  border-radius: 999px;
+  background-color: var(--cs-soft);
+}
+
+.progress-bar {
+  background-color: var(--cs-accent);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* ---------- 9. Cart table ---------- */
+.cs-table thead th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cs-muted);
+  border-bottom-color: var(--cs-border);
+  white-space: nowrap;
+}
+
+.cs-table td {
+  border-color: var(--cs-border);
+  vertical-align: middle;
+}
+
+.cs-table tbody tr:hover {
+  background-color: #f8fbfb;
+}
+
+.cs-grand-total-row th,
+.cs-grand-total-row td {
+  font-size: 1.1rem;
+  color: var(--cs-primary-dark);
+  border-top: 2px solid var(--cs-primary) !important;
+  padding-top: 0.85rem;
+}
+
+/* ---------- 10. Empty states ---------- */
+.cs-empty-state {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  border: 2px dashed var(--cs-border);
+  border-radius: 1rem;
+  background-color: #fbfdfd;
+}
+
+.cs-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- 11. Members list ---------- */
+.cs-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--cs-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.cs-member-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+}
+
+/* ---------- 12. Activity log (scrollable) ---------- */
+.cs-activity-list {
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.cs-activity-item {
+  border-left: 3px solid var(--cs-border);
+  padding: 0.4rem 0 0.4rem 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.92rem;
+}
+
+.cs-activity-item.activity-added { border-left-color: #16a34a; }
+.cs-activity-item.activity-removed { border-left-color: #dc2626; }
+.cs-activity-item.activity-joined { border-left-color: var(--cs-primary); }
+.cs-activity-item.activity-created { border-left-color: var(--cs-accent); }
+
+/* ---------- 13. Alerts (keep them neat) ---------- */
+#alert-area .alert {
+  border-radius: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- 14. Responsive tweaks ---------- */
+@media (max-width: 575.98px) {
+  .cs-room-code {
+    font-size: 1.25rem;
+    letter-spacing: 0.15em;
+  }
+
+  .cs-card .card-body {
+    padding: 1.25rem !important;
+  }
+}
+
+/* ---------- 15. Respect users who prefer reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: none;
+  }
+}
+
+/* =====================================================
+   16. RECEIPT: on-screen hidden, print-only layout
+   ===================================================== */
+
+/* On screen the receipt is hidden. It is only shown while printing. */
+.receipt-print {
+  display: none;
+}
+
+/* Receipt styling (used in print and in the markup built by app.js) */
+.receipt {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  font-size: 12pt;
+}
+
+.receipt-header {
+  text-align: center;
+  border-bottom: 2px solid #000;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+
+.receipt-header h1 {
+  font-size: 20pt;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.04em;
+}
+
+.receipt-header p {
+  margin: 2px 0;
+}
+
+.receipt-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.receipt-table th,
+.receipt-table td {
+  border-bottom: 1px solid #999;
+  padding: 6px 4px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.receipt-table th {
+  border-bottom: 2px solid #000;
+  font-size: 10.5pt;
+  text-transform: uppercase;
+}
+
+.receipt-table .num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.receipt-table .grand-total td {
+  border-top: 2px solid #000;
+  border-bottom: none;
+  font-weight: bold;
+  font-size: 13pt;
+}
+
+.receipt-section-title {
+  font-weight: bold;
+  margin: 14px 0 6px 0;
+  font-size: 12pt;
+  text-transform: uppercase;
+}
+
+.receipt-footer {
+  margin-top: 18px;
+  border-top: 1px solid #000;
+  padding-top: 8px;
+  font-size: 9.5pt;
+  text-align: center;
+}
+
+/* Print rules: hide the whole page, then show only the receipt */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .receipt-print,
+  .receipt-print * {
+    visibility: visible;
+  }
+
+  .receipt-print {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  .receipt-table tr {
+    page-break-inside: avoid;
+  }
+}
